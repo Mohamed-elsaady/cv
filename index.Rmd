@@ -56,7 +56,7 @@ Aside
 if(PDF_EXPORT){
   cat("View this CV online with links at _nickstrayer.me/cv_")
 } else {
-  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/Mohamed-elsaady/cv/raw/master/Mohamed-El Saady’s-cv.pdf)")
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/Mohamed-elsaady/cv/Mohamed-El-Saady-cv.pdf)")
 }
 ```
 
@@ -103,7 +103,7 @@ Disclaimer {#disclaimer}
 
 Made with the R package [pagedown](https://github.com/rstudio/pagedown). 
 
-The source code is available at <br/> [github.com/Mohamed-elsaady/cv](https://github.com/Mohamed-elsaady).
+The source code is available at <br/> [github.com/Mohamed-elsaady/cv](https://github.com/Mohamed-elsaady/cv).
 
 
 

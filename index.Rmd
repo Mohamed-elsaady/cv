@@ -1,0 +1,187 @@
+---
+title: "Mohamed El Saady's CV"
+author: Mohamed El Saady
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/styles.css', 'resume']
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(glue)
+library(tidyverse)
+
+# Set this to true to have links turned into footnotes at the end of the document
+PDF_EXPORT <- FALSE
+
+# Holds all the links that were inserted for placement at the end
+links <- c()
+
+source('parsing_functions.R')
+
+# Load csv with position info
+position_data <- read_csv('positions.csv')
+```
+
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  cat("
+  <style>
+  :root{
+    --decorator-outer-offset-left: -6.5px;
+  }
+  </style>")
+}
+```
+
+
+Aside
+================================================================================
+
+
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  cat("View this CV online with links at _nickstrayer.me/cv_")
+} else {
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/Mohamed-elsaady/cv/raw/master/Mohamed-El Saady’s-cv.pdf)")
+}
+```
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+
+- <i class="fa fa-envelope"></i> melsaady@asu.edu
+- <i class="fa fa-github"></i> github.com/Mohamed-elsaady
+- <i class="fa fa-phone"></i> (971) 507537818
+
+
+
+Skills & Expertise {#skills}
+--------------------------------------------------------------------------------
+
+- • R programming
+- • Data wrangling, Data visualization
+- • Github
+- • PHP
+- • HTML5 & CSS3 BEM notation
+- • Bootstrap, tailwind, Zurb Foundation
+- • Flexbox Grid
+- • Sass(scss), PostCSS
+- • Wireframing and UX
+- • Sketch, Illustrator, Figma
+- • Javascript, OOP, DOM
+- • ReactJS & Redux
+- • Yarn, Gulp, Webpack, Parcel
+- • Linux, Windows, GCP and AWS
+- • Lamp Stack, Apache, Nginx, IIS 7.0
+
+```{r}
+
+
+```
+
+
+
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made with the R package [pagedown](https://github.com/rstudio/pagedown). 
+
+The source code is available at <br/> [github.com/Mohamed-elsaady/cv](https://github.com/Mohamed-elsaady).
+
+
+
+
+Main
+================================================================================
+
+Mohamed El Saady {#title}
+--------------------------------------------------------------------------------
+
+
+```{r}
+intro_text <- "I am currently pursuing a master's degree in Program Evaluation and Data Analytics from Azrinoa state university, looking forward to being an aspiring data scientist and honing my data analytics skills.  I am a go-getter, and I don't mind being pushed out of my comfort zones. I am eager to learn new technologies, adapt and collaborate. With grit, dedication and pride in writing scalable, elegant code, creating simple solutions to complex data problems.
+"
+
+cat(sanitize_links(intro_text))
+```
+
+
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'education')
+```
+
+
+
+Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+
+
+```{r}
+print_section(position_data, 'industry_positions')
+```
+
+<br>
+<br>
+<br>
+
+Training {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+
+
+```{r}
+print_section(position_data, 'teaching_positions')
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+if(PDF_EXPORT){
+  cat("
+  
+Links {data-icon=link}
+--------------------------------------------------------------------------------
+
+<br>
+
+
+")
+  
+  walk2(links, 1:length(links), function(link, index){
+    print(glue('{index}. {link}'))
+  })
+}
+```
+
+
